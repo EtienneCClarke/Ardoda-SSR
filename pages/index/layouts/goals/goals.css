@@ -1,0 +1,185 @@
+#goals {
+    margin-block: max(5vh, 150px);
+}
+
+#goals .header {
+    margin-bottom: 5vh;
+}
+
+.goals-container {
+    width: calc(100% - (var(--content-margin) * 2));
+    max-width: 1500px;
+    margin-inline: auto;
+}
+
+.goals-content:first-child {
+    margin-top: 5vh;
+}
+
+.goals-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin-top: 50px;
+    gap: 1.2em;
+}
+
+.goals-content a, .goals-content a:visited {
+    text-decoration: none;
+    color: unset;
+}
+
+.goal {
+    position: relative;
+    max-height: 150px;
+    height: 150px;
+    min-width: fit-content;
+}
+
+.goal-box {
+    position: relative;
+    border: 2px solid rgb(255 255 255 / 5%);
+    background-image: var(--background-image-dots);
+    background-size: 15px 15px;
+    background-position: 50% 50%;
+    background-clip: padding-box;
+    transition: 350ms ease;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    z-index: 2;
+    min-width: 150px;
+}
+
+.goal:before {
+    background: var(--gradient-secondary);
+    background-position: 100% 100%;
+    background-size: 200% 200%;
+    content: "";
+    height: 100%;
+    left: 0px;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    transition: transform 350ms ease;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+
+.goal:hover .goal-box {
+    border: 2px solid rgb(255 255 255 / 25%);
+    background-image: radial-gradient(rgb(255 255 255 / 25%) 1px, transparent 0);
+    background-position: 60% 40%;
+    transform: scale(1.03);
+}
+
+.goal:hover:before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.goal-txt {
+    display: flex;
+    z-index: 2;
+}
+
+.goal-txt p:nth-child(1) {
+    font-family: 'Ubuntu', sans-serif;
+    padding-right: 1em;
+}
+
+.goal-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+@media screen and (max-width: 1450px) {
+    .goals-content {
+        justify-content: unset;
+        max-width: 960px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .goals-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: unset;
+        justify-content: stretch;
+    }
+    .goal {
+        width: 50%;
+        max-width: 50%;
+        flex-grow: 1;
+        max-height: 100px;
+    }
+    .goal-box {
+        flex-direction: row;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .goal .goal-box {
+        border-left: unset;
+        border-right: unset;
+        border-bottom: unset;
+        border-block-width: 1px;
+    }
+    .goal:nth-child(even) .goal-box {
+        border-left: 1px solid rgb(255 255 255 / 5%);
+    }
+    .goal:nth-child(16) .goal-box {
+        border-bottom: 1px solid rgb(255 255 255 / 5%);
+    }
+    .goal:hover .goal-box {
+        border: 2px solid rgb(255 255 255 / 25%);
+    }
+    .goal-txt{ 
+        flex-grow: 1;
+    }
+    .goal-icon {
+        width: fit-content;
+    }
+    .goal:hover:before {
+        transform: scale(1.05, 1.1);
+    }
+}
+
+@media screen and (max-width: 815px) {
+    .goal {
+        width: 100%;
+        max-width: unset;
+        height: unset;
+    }
+    .goal-txt br {
+        display: none;
+    }
+    .goal:nth-child(even) .goal-box {
+        border-left: unset;
+    }
+    .goal:nth-child(16) .goal-box {
+        border-bottom: unset;
+    }
+    .goal:hover .goal-box {
+        border: 2px solid rgb(255 255 255 / 25%);
+    }
+    .goal-icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .goal-txt {
+        font-size: 0.8em;
+        max-width: 80%;
+        overflow-x: scroll;
+    }
+}

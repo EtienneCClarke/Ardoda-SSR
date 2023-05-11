@@ -1,0 +1,89 @@
+#chains {
+    position: relative;
+    margin: 5vh 0 10vh 0;
+}
+
+.chains-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-block: 7.5em;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.chains-content {
+    width: calc(100% - (var(--content-margin) * 2));
+    max-width: 1500px;
+}
+
+.chains-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 5em;
+    gap: 4em;
+}
+
+.chains-grid img {
+    max-width: 300px;
+}
+
+#chains .a.background-ball {
+    --right: 0;
+    --top: 0;
+    --width: 16em;
+    transform: translate(50%, -50%) rotate(105deg);
+}
+
+#chains .b.background-ball {
+    --right: 30%;
+    --bottom: 0;
+    --width: 5em;
+    transform: translateY(50%) rotate(-68deg);
+}
+
+#chains .c.background-ball {
+    --left: 10%;
+    --top: 30%;
+    --width: 2.8em;
+    transform: rotate(-105deg);
+}
+
+@media screen and (max-width: 1300px) {
+    .chains-grid {
+        grid-template-columns: auto auto;
+    }
+    .chains-grid img {
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #chains .header {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80% !important;
+    }
+    .chains-content {
+        width: 100%;
+    }
+    .chains-grid {
+        grid-template-columns: auto;
+        margin-inline: auto;
+        width: 80%;
+    }
+    .chains-grid img {
+        margin-inline: auto;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .chains-grid img {
+        width: 60%;
+        height: auto;
+    }
+}

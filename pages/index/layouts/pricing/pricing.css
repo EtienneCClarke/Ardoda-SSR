@@ -1,0 +1,118 @@
+#pricing {
+    min-height: (100vh);
+    margin-block: 200px;
+    position: relative;
+}
+
+.pricing-content-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.pricing-container {
+    width: calc(100% - (var(--content-margin) * 2));
+    padding-block: max(5vh, 100px);
+    max-width: 1200px;
+    margin-inline: auto;
+    text-align: center;
+    position: relative;
+}
+
+#pricing .title-container h1 {
+    font-size: 3.5em;
+}
+
+#pricing .title-container p {
+    font-size: 1.2em;
+    font-weight: var(--text-weight-light);
+    margin-top: 1em;
+}
+
+.pricing-content {
+    margin-top: 115px;
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+}
+
+.price-box {
+    padding: 100px;
+    border-radius: 25px;
+    margin-inline: 25px;
+}
+
+.price-box h2 {
+    font-size: 3em;
+}
+
+#pricing .a.background-ball {
+    --right: 0;
+    --top: 0;
+    --width: 22em;
+    transform: rotate(27deg);
+}
+
+#pricing .b.background-ball {
+    --bottom: 10%;
+    --left: 0;
+    transform: rotate(-53deg);
+}
+
+@media screen and (max-width: 1250px) {
+    .pricing-content {
+        margin-top: 60px;
+    }
+    .price-box {
+        padding: 75px;
+    }
+    .price-box h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .pricing-content {
+        flex-direction: column;
+        gap: 2em;
+    }
+    .price-box {
+        padding: unset;
+        padding-block: 50px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #pricing {
+        margin-block: 100px;
+    }
+    .pricing-container {
+        padding-block: 50px;
+    }
+    #pricing .title-container h1 {
+        font-size: 2em;
+    }
+    #pricing .title-container p {
+        font-size: 0.8em;
+    }
+    .price-box {
+        padding-block: 50px;
+        border-radius: 10px;
+    }
+    .price-box h2 {
+        font-size: 1em;
+    }
+    #pricing .a.background-ball {
+        --width: 10em;
+        --right: 10px;
+        --top: 0;
+    }
+    
+    #pricing .b.background-ball {
+        --bottom: 20px;
+        --left: 0;
+        --width: 4em;
+    }
+}

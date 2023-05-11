@@ -1,0 +1,124 @@
+#team {
+    min-height: 100vh;
+    margin-bottom: 150px;
+}
+
+.team-container {
+    width: calc(100% - (var(--content-margin) * 2));
+    max-width: 1500px;
+    margin-inline: auto;
+}
+
+.team-content {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    justify-content: space-between;
+    gap: 4rem;
+    transition: var(--animation-duration-fast);
+}
+
+.team-member {
+    width: 100%;
+    height: fit-content;
+    transition: var(--animation-duration-fast);
+}
+
+.team-image {
+    width: 100%;
+    height: auto;
+    filter: saturate(0);
+    transition: var(--animation-duration-fast);
+}
+
+.team-image:hover {
+    filter: saturate(1);
+    transform: translateY(-10px);
+}
+
+.member-info {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.member-info h2 {
+    font-size: 1.2em;
+    font-weight: var(--text-weight-medium);
+}
+
+.member-info p {
+    margin-top: 5px;
+    font-size: 0.8em;
+    font-weight: var(--text-weight-light);
+}
+
+.member-name a {
+    color: unset;
+    text-decoration: none;
+}
+
+.member-name a:hover {
+    text-decoration: underline;
+}
+
+.member-socials {
+    width: fit-content;
+    margin-left: auto;
+    display: flex;
+    gap: 0.4em;
+    height: max-content;
+    align-items: center;
+}
+
+.member-socials a img {
+    opacity: 0.5;
+    transition: var(--animation-duration-fast);
+    cursor: pointer;
+    width: 17px;
+}
+
+.member-socials a img:hover {
+    opacity: 1;
+}
+
+@media screen and (max-height: 850px) {
+    .team-content {
+        gap: 3.5em;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .team-content {
+        grid-template-columns: repeat(auto-fill, calc(270px * 0.9));
+        gap: 2rem 1rem;
+    }
+    .team-member {
+        transform: scale(0.9);
+    }
+    .team-content {
+        gap: 1em;
+    }
+}
+
+@media screen and (max-width: 1125px) {
+    .team-content {
+        gap: unset;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .team-member {
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .team-member {
+        transform: scale(0.9);
+    }
+    .team-content {
+        display: flex;
+        flex-direction: column;
+    }
+}
