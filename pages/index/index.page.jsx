@@ -15,8 +15,20 @@ import "./home.css"
 import "../../assets/css/style.css"
 import "animate.css/animate.min.css";
 
-export const documentProps = {
-    title: 'Hello'
+export { getDocumentProps }
+
+function getDocumentProps(pageProps) {
+    return {
+        cardTitle: "Smart contracts for investors.",
+        cardDescription: "We leverage the power of blockchain technology to make investing in the next unicorn easy.",
+        cardImageUrl: "http://live.staticflickr.com/65535/52831653377_3981922e28_b.jpg",
+        cardSecureImageUrl: "https://live.staticflickr.com/65535/52831653377_3981922e28_b.jpg",
+        cardImageType: "image/jpeg",
+        cardImageAlt: "Ardoda Landing Page",
+        cardImageHeight: "1151",
+        cardImageWidth: "630",
+        cardUrl: "https://ardoda.com"
+    }
 }
 
 function Page() {

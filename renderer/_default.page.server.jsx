@@ -1,4 +1,3 @@
-// See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ['pageProps', 'urlPathname']
 
 import ReactDOMServer from 'react-dom/server'
@@ -11,7 +10,6 @@ async function render(pageContext) {
 
 	const { Page, pageProps } = pageContext
 	
-	// This render() hook only supports SSR, see https://vite-plugin-ssr.com/render-modes for how to modify render() to support SPA
 	if (!Page) throw new Error('My render() hook expects pageContext.Page to be defined')
 	const pageHtml = ReactDOMServer.renderToString(
 		<PageShell pageContext={pageContext}>
@@ -19,10 +17,19 @@ async function render(pageContext) {
 		</PageShell>
 	)
 
-	// See https://vite-plugin-ssr.com/head
-	const { documentProps } = pageContext.exports
-	const title = (documentProps && documentProps.title) || 'Ardoda'
-	const desc = (documentProps && documentProps.description) || 'We tear down barriers within the creator economy so innovation and prosperity will thrive.'
+	const { getDocumentProps } = pageContext.exports
+
+	const {
+		cardTitle,
+		cardDescription,
+		cardImageUrl,
+		cardSecureImageUrl,
+		cardImageType,
+		cardImageAlt,
+		cardImageHeight,
+		cardImageWidth,
+		cardUrl
+	} = getDocumentProps(pageProps);
 
 	const documentHtml = escapeInject`<!DOCTYPE html>
 		<html lang="en">
@@ -30,8 +37,8 @@ async function render(pageContext) {
 			<meta charset="UTF-8" />
 			<link rel="icon" href="${logoUrl}" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<meta name="description" content="${desc}" />
-			<title>${title}</title>
+			<meta name="description" content="Smart contracts for your business that tear down barriers so innovation and prosperity will thrive." />
+			<title>Ardoda</title>
 
 			<meta name="keywords" content="Ardoda, Web3, Crypto, Payment Splitter, Fintech, DeFi, Law, Contract, Smart Contract, Business, Legal, Solicitors">
 			<meta name="keywords" content="Ardoda, Ardoda.com, Ardado, Arddo, Ardoda.biz, ardao, Squid, Squid.biz, Squid.com, Leonardo Davinci, Leonardo, Vinci">
@@ -47,6 +54,34 @@ async function render(pageContext) {
 			<meta name="keywords" content="Metafest.ch, Paul Clarke, Etienne Clarke, Paul Cellier-Clarke, Etienne Cellier-Clarke, JRich ENT, CryptoJamieNFT, Crypto Jamie,">
 			<meta name="keywords" content="Manchester Blockchain Alliance, UK Crypto, Web3 UK, Web3 UK Companies, Invest UK, Angel Investor, What is angel inventment">
 			<meta name="keywords" content="North West Invest, Northern Powerhouse Invest, Global Finance Powerhouse UK, Private Equity, Family Office, Venture Capital">
+
+			<!-- Open Graph -->
+			<meta property="og:site_name" content="Ardoda.com">
+			<meta property="og:title" content="${cardTitle}">
+			<meta property="og:description" content="${cardDescription}">
+			<meta property="og:type" content="website">
+			<meta property="og:card" content="summary_large_image">
+			<meta property="og:image" content="${cardImageUrl}">
+			<meta property="og:image:secure_url" content="${cardSecureImageUrl}">
+			<meta property="og:image:type" content="${cardImageType}">
+			<meta property="og:image:alt" content="${cardImageAlt}">
+			<meta property="og:image:width" content="${cardImageWidth}">
+			<meta property="og:image:height" content="${cardImageHeight}">
+			<meta property="og:url" content="${cardUrl}">
+
+			<!-- TWITTER -->
+			<meta property="twitter:site_name" content="Ardoda.com">
+			<meta property="twitter:title" content="${cardTitle}">
+			<meta property="twitter:description" content="${cardDescription}">
+			<meta property="twitter:type" content="website">
+			<meta property="twitter:card" content="summary_large_image">
+			<meta property="twitter:image" content="${cardImageUrl}">
+			<meta property="twitter:image:secure_url" content="${cardSecureImageUrl}">
+			<meta property="twitter:image:type" content="${cardImageType}">
+			<meta property="twitter:image:alt" content="${cardImageAlt}">
+			<meta property="twitter:image:width" content="${cardImageWidth}">
+			<meta property="twitter:image:height" content="${cardImageHeight}">
+			<meta property="twitter:url" content="${cardUrl}">
 
 		</head>
 		<body>

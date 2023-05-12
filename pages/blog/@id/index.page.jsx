@@ -5,9 +5,27 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import "../../../assets/css/style.css";
 import "./post.css";
 
+export { getDocumentProps }
+
+function getDocumentProps(pageProps) {
+    let { post } = pageProps;
+    return {
+        cardTitle: post.fields.title,
+        cardDescription: post.fields.summary,
+        cardImageUrl: "http:" + post.fields.image.fields.file.url,
+        cardSecureImageUrl: "https:" + post.fields.image.fields.file.url,
+        cardImageType: post.fields.image.fields.file.contentType,
+        cardImageAlt: post.fields.image.fields.title,
+        cardImageHeight: post.fields.image.fields.file.details.image.height.toString(),
+        cardImageWidth: post.fields.image.fields.file.details.image.width.toString(),
+        cardUrl: "https://ardoda.com/blog/" + post.sys.id,
+    }
+}
+
 function Page(pageProps) {
 
-    const { post } = pageProps
+    let { post } = pageProps;
+    post = post.fields;
 
     const RICHTEXT_OPTIONS = {
         renderNode: {
