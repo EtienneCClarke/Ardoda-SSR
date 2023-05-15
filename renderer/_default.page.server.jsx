@@ -13,7 +13,7 @@ async function render(pageContext) {
 	if (!Page) throw new Error('My render() hook expects pageContext.Page to be defined')
 	const pageHtml = ReactDOMServer.renderToString(
 		<PageShell pageContext={pageContext}>
-		<Page {...pageProps} />
+			<Page {...pageProps} />
 		</PageShell>
 	)
 
@@ -84,6 +84,17 @@ async function render(pageContext) {
 			<meta property="twitter:url" content="${cardUrl}">
 
 		</head>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KL3K7CPYMB"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-KL3K7CPYMB', { 'anonymize_ip': true });
+		</script>
+		
 		<body>
 			<div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
 		</body>

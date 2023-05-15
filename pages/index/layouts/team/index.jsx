@@ -67,7 +67,7 @@ export default function Team() {
                                 <h2 className="member-name">
                                     <Link href="./profiles/Sorcha Mulligan">Sorcha Mulligan</Link>
                                 </h2>
-                                <p className="member-title blue-txt">Chief Strategy Officer / The SME Chain</p>
+                                <p className="member-title blue-txt">CSO / The SME Chain</p>
                             </div>
                             <div className="member-socials">
                                 {/* <a><img src={twitter} alt="twitter"/></a> */}
