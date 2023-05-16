@@ -29,7 +29,7 @@ async function startServer() {
   }
 
   app.get('*', async (req, res, next) => {
-    console.log(req);
+    console.log(`Received a ${req.method} request for ${req.url}`);
     const pageContextInit = {
       urlOriginal: req.originalUrl
     }
