@@ -4,23 +4,6 @@ import Article from "./article";
 import "../../../assets/css/style.css";
 import "./profile.css";
 
-export { getDocumentProps }
-
-function getDocumentProps(pageProps) {
-    let { person } = pageProps;
-    return {
-        cardTitle: person.name,
-        cardDescription: person.bio,
-        cardImageUrl: "",
-        cardSecureImageUrl: "",
-        cardImageType: "",
-        cardImageAlt: "",
-        cardImageHeight: "",
-        cardImageWidth: "",
-        cardUrl: "https://ardoda.com/profiles/" + person.name,
-    }
-}
-
 function Page(pageProps) {
 
     const { person, articles } = pageProps;

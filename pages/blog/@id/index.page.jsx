@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "../../../renderer/Link";
 import { Header, Footer } from "../../../components";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -5,24 +6,9 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import "../../../assets/css/style.css";
 import "./post.css";
 
-export { getDocumentProps }
-
-function getDocumentProps(pageProps) {
-    let { post } = pageProps;
-    return {
-        cardTitle: post.fields.title,
-        cardDescription: post.fields.summary,
-        cardImageUrl: "http:" + post.fields.image.fields.file.url,
-        cardSecureImageUrl: "https:" + post.fields.image.fields.file.url,
-        cardImageType: post.fields.image.fields.file.contentType,
-        cardImageAlt: post.fields.image.fields.title,
-        cardImageHeight: post.fields.image.fields.file.details.image.height.toString(),
-        cardImageWidth: post.fields.image.fields.file.details.image.width.toString(),
-        cardUrl: "https://ardoda.com/blog/" + post.sys.id,
-    }
-}
-
 function Page(pageProps) {
+
+    const [date, setDate] = useState('');
 
     let { post } = pageProps;
     post = post.fields;
@@ -54,12 +40,12 @@ function Page(pageProps) {
         }
     }
 
-    function date() {
+    useEffect(() => {
         let options = { day: '2-digit', month: 'long', year: 'numeric'};
         let datePublished = new Date(post.datePublished);
-        return(<p>{datePublished.toLocaleDateString("en-GB", options)}</p>);
-    }
-    
+        setDate(datePublished.toLocaleDateString("en-GB", options));
+    }, [])
+
     return(
         <section id="post">
             <Header />
@@ -72,7 +58,7 @@ function Page(pageProps) {
                             <img src={post.authorImage.fields.file.url} />
                             <div className="post-author">
                                 <p className="post-author-name">{post.author}</p>
-                                <p>{date()}</p>
+                                <p>{date}</p>
                             </div>
                         </Link>
                         <div className="post-tags">

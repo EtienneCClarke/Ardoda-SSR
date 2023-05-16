@@ -3,22 +3,6 @@ import { LatestPost, PostPreview } from "./layouts";
 import "../../assets/css/style.css";
 import "./blog.css";
 
-export { getDocumentProps }
-
-function getDocumentProps(pageProps) {
-    return {
-        cardTitle: "Ardoda Circular",
-        cardDescription: "Weekly insights into technology and economy",
-        cardImageUrl: "http://www.ardoda.com/ardoda_circular.jpg",
-        cardSecureImageUrl: "https://www.ardoda.com/ardoda_circular.jpg",
-        cardImageType: "image/jpeg",
-        cardImageAlt: "Ardoda Circular title and subheading",
-        cardImageWidth: "1151",
-        cardImageHeight: "630",
-        cardUrl: "https://ardoda.com/blog"
-    }
-}
-
 function Page(pageProps) {
 
     const { data } = pageProps;

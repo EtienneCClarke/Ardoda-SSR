@@ -5,6 +5,7 @@ import React from 'react'
 import { PageShell } from './PageShell'
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr/server'
 import logoUrl from '../assets/images/icons/favicon.ico'
+import cardImage from "../public/ardoda.jpg";
 
 async function render(pageContext) {
 
@@ -16,20 +17,6 @@ async function render(pageContext) {
 			<Page {...pageProps} />
 		</PageShell>
 	)
-
-	const { getDocumentProps } = pageContext.exports
-
-	const {
-		cardTitle,
-		cardDescription,
-		cardImageUrl,
-		cardSecureImageUrl,
-		cardImageType,
-		cardImageAlt,
-		cardImageHeight,
-		cardImageWidth,
-		cardUrl
-	} = getDocumentProps(pageProps);
 
 	const documentHtml = escapeInject`<!DOCTYPE html>
 		<html lang="en">
@@ -57,31 +44,31 @@ async function render(pageContext) {
 
 			<!-- Open Graph -->
 			<meta property="og:site_name" content="Ardoda.com">
-			<meta property="og:title" content="${cardTitle}">
-			<meta property="og:description" content="${cardDescription}">
+			<meta property="og:title" content="Ardoda">
+			<meta property="og:description" content="Smart contracts that tear down barriers so innovation and prosperity will thrive.">
 			<meta property="og:type" content="website">
 			<meta property="og:card" content="summary_large_image">
-			<meta property="og:image" content="${cardImageUrl}">
-			<meta property="og:image:secure_url" content="${cardSecureImageUrl}">
-			<meta property="og:image:type" content="${cardImageType}">
-			<meta property="og:image:alt" content="${cardImageAlt}">
-			<meta property="og:image:width" content="${cardImageWidth}">
-			<meta property="og:image:height" content="${cardImageHeight}">
-			<meta property="og:url" content="${cardUrl}">
+			<meta property="og:image" content="http://www.ardoda.com/ardoda_circular.jpg">
+			<meta property="og:image:secure_url" content="https://www.ardoda.com/ardoda_circular.jpg">
+			<meta property="og:image:type" content="image/jpeg">
+			<meta property="og:image:alt" content="Ardoda logo and sub-heading">
+			<meta property="og:image:width" content="1200">
+			<meta property="og:image:height" content="630">
+			<meta property="og:url" content="https://www.ardoda.com">
 
 			<!-- TWITTER -->
 			<meta property="twitter:site_name" content="Ardoda.com">
-			<meta property="twitter:title" content="${cardTitle}">
-			<meta property="twitter:description" content="${cardDescription}">
+			<meta property="twitter:title" content="Ardoda">
+			<meta property="twitter:description" content="Smart contracts that tear down barriers so innovation and prosperity will thrive.">
 			<meta property="twitter:type" content="website">
 			<meta property="twitter:card" content="summary_large_image">
-			<meta property="twitter:image" content="${cardImageUrl}">
-			<meta property="twitter:image:secure_url" content="${cardSecureImageUrl}">
-			<meta property="twitter:image:type" content="${cardImageType}">
-			<meta property="twitter:image:alt" content="${cardImageAlt}">
-			<meta property="twitter:image:width" content="${cardImageWidth}">
-			<meta property="twitter:image:height" content="${cardImageHeight}">
-			<meta property="twitter:url" content="${cardUrl}">
+			<meta property="twitter:image" content="http://www.ardoda.com/ardoda_circular.jpg">
+			<meta property="twitter:image:secure_url" content="https://www.ardoda.com/ardoda_circular.jpg">
+			<meta property="twitter:image:type" content="image/jpeg">
+			<meta property="twitter:image:alt" content="Ardoda logo and sub-heading">
+			<meta property="twitter:image:width" content="1200">
+			<meta property="twitter:image:height" content="630">
+			<meta property="twitter:url" content="https://www.ardoda.com">
 
 		</head>
 
