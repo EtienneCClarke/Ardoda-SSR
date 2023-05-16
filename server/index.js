@@ -29,7 +29,7 @@ async function startServer() {
   }
 
   app.get('*', async (req, res, next) => {
-    console.log(`Received a ${req.method} request for ${req.url}`);
+    console.log(`Received a ${req.method} request from '${req.socket.remoteAddress}' for ${req.url}`);
     const pageContextInit = {
       urlOriginal: req.originalUrl
     }
