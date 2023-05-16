@@ -29,6 +29,7 @@ async function startServer() {
   }
 
   app.get('*', async (req, res, next) => {
+    console.log(req);
     const pageContextInit = {
       urlOriginal: req.originalUrl
     }
@@ -40,7 +41,7 @@ async function startServer() {
     res.status(statusCode).type(contentType).send(body)
   })
 
-  const port = process.env.PORT || 80
+  const port = process.env.PORT || 8080
   app.listen(port)
   console.log(`Server running on port: ${port}`)
 }
