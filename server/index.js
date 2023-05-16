@@ -41,7 +41,7 @@ async function startServer() {
     res.status(statusCode).type(contentType).send(body)
   })
 
-  const port = process.env.PORT || 8080
+  const port = process.env.PORT || 80
   app.listen(port)
   console.log(`Server running on port: ${port}`)
 }
